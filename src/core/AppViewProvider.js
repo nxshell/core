@@ -9,7 +9,7 @@ const WINDOW_TYPE = {
 };
 
 /**
- * @type {AppRPC.Channel} 
+ * @type {AppRPC.Channel}
  */
 let windowProviderChannel = null;
 
@@ -47,7 +47,7 @@ function getLastWindowProviderRequestId() {
 
 /**
  * 处理Window提供者的响应
- * 
+ *
  * @param {Object} viewInfo 视图信息
  * @param {Number} viewInfo.reqId 请求ID
  * @param {Number} viewInfo.webContentId webContentId
@@ -110,7 +110,7 @@ const subViewManager = {
         let viewProxy = new Proxy({}, {
             get(target, p, receiver) {
                 return async function(...args) {
-                    return await _this.callViewProvider(webContentId, p, args) 
+                    return await _this.callViewProvider(webContentId, p, args)
                 }
             },
             set(target, p, value, receiver) {
@@ -123,7 +123,7 @@ const subViewManager = {
 }
 
 function get_nxshell_logo() {
-    
+
 }
 
 
@@ -131,8 +131,10 @@ const windowProviders = {
     async mainWindow (flags) {
         /** @type {import("electron/main").BrowserWindowConstructorOptions} */
         let options = {
-            width: 1200,
+            width: 1250,
+            minWidth: 1250,
             height: 720,
+            minHeight: 720,
             show: false,
             webPreferences: {
                 preload: `${__dirname}/AppClient.js`,
@@ -181,7 +183,7 @@ async function createWindow(windowType, flags) {
 
 /**
  * 注册一个窗口提供者
- * 
+ *
  * @param {Channel} winProviderChannel window管理提供者提供的channel
  */
 function registerWindowProvider(winProviderChannel) {
