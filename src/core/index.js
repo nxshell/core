@@ -71,7 +71,7 @@ module.exports = {
         process_macos_acitve_event();
 
         // must end
-        check_app_update();
+        // check_app_update();
         report_app_statis();
         setup_app_report_interval();
     }
